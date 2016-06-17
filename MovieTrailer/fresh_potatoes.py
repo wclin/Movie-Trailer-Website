@@ -2,6 +2,7 @@ import webbrowser
 import os
 import re
 
+# Code mainly based on: https://github.com/adarsh0806/ud036_StarterCode/blob/master/fresh_tomatoes.py
 
 # Styles and scripting for the page
 main_page_head = '''
