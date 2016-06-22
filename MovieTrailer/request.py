@@ -5,13 +5,40 @@ from pprint import pprint
 
 api_key = "4f6c1387d0935fa644b5b7a1484146ac"
 
-request = Request('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc' + '&api_key=' + api_key)
+#request = Request('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc' + '&api_key=' + api_key)
+#request = Request('https://api.themoviedb.org/3/movie/246655?&api_key=' + api_key)
+#request = Request('https://api.themoviedb.org/3/movie/246655/images?&api_key=' + api_key)
 
-try:
-    response = urlopen(request)
-    data = response.read()
-    jdata = json.loads(data)
-    jdata = jdata[u'results'][0]
+def sendReq(request):
+    try:
+        response = urlopen(request)
+        data = response.read()
+        jdata = json.loads(data)
+        return jdata
+        #jdata = jdata[u'results'][0]
+        #pprint(jdata)
+    except URLError, e:
+        print 'No data. Got an error code:', e
+
+def getPopList():
+    request = Request('https://api.themoviedb.org/3/movie/popular?' 
+            + '&api_key=' + api_key)
+    jdata = sendReq(request)
     pprint(jdata)
-except URLError, e:
-    print 'No data. Got an error code:', e
+
+def getImage(movie_id):
+    request = Request('https://api.themoviedb.org/3/movie/' + movie_id
+            + '/images?&api_key=' + api_key)
+    jdata = sendReq(request)
+    pprint(jdata)
+
+def getVideo(movie_id):
+    request = Request('https://api.themoviedb.org/3/movie/' + movie_id 
+            + '/videos?&api_key=' + api_key)
+    jdata = sendReq(request)
+    pprint(jdata)
+
+getPopList()
+#getImage('246655')
+#getVideo('246655')
+
