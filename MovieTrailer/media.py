@@ -1,5 +1,5 @@
 import webbrowser
-import request
+from request import *
 
 class Movie():
     """A simple movie datastructure"""

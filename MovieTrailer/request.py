@@ -30,28 +30,28 @@ def getPopList():
     return pop_list
 
 def getImage(movie_id):
-    request = Request('https://api.themoviedb.org/3/movie/' + movie_id
+    request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
             + '/images?&api_key=' + api_key)
     jdata = sendReq(request)
     file_path = jdata['backdrops'][0]['file_path']
     return 'https://image.tmdb.org/t/p/w500' + file_path
 
 def getVideo(movie_id):
-    request = Request('https://api.themoviedb.org/3/movie/' + movie_id 
+    request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id) 
             + '/videos?&api_key=' + api_key)
     jdata = sendReq(request)
     key = jdata['results'][0]['key']
     return 'https://www.youtube.com/watch?v=' + key
 
 def getTitle(movie_id):
-    request = Request('https://api.themoviedb.org/3/movie/' + movie_id 
+    request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id) 
             + '?&api_key=' + api_key)
     jdata = sendReq(request)
     title = jdata['original_title']
     return title
 
 def getPoster(movie_id):
-    request = Request('https://api.themoviedb.org/3/movie/' + movie_id
+    request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
             + '?&api_key=' + api_key)
     jdata = sendReq(request)
     poster_path = jdata['poster_path']
@@ -63,4 +63,4 @@ def getPoster(movie_id):
 #print getImage('246655')
 #print getVideo('246655')
 #print getTitle('246655')
-print getPoster('246655')
+#print getPoster('246655')
