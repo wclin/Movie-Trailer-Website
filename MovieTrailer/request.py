@@ -21,24 +21,29 @@ def sendReq(request):
         print 'No data. Got an error code:', e
 
 def getPopList():
+    pop_list = []
     request = Request('https://api.themoviedb.org/3/movie/popular?' 
             + '&api_key=' + api_key)
     jdata = sendReq(request)
-    pprint(jdata)
+    for mv in jdata['results']:
+        pop_list.append(mv['id'])
+    return pop_list
 
 def getImage(movie_id):
     request = Request('https://api.themoviedb.org/3/movie/' + movie_id
             + '/images?&api_key=' + api_key)
     jdata = sendReq(request)
-    pprint(jdata)
+    file_path = jdata['backdrops'][0]['file_path']
+    return 'https://image.tmdb.org/t/p/w500' + file_path
 
 def getVideo(movie_id):
     request = Request('https://api.themoviedb.org/3/movie/' + movie_id 
             + '/videos?&api_key=' + api_key)
     jdata = sendReq(request)
-    pprint(jdata)
+    key = jdata['results'][0]['key']
+    return 'https://www.youtube.com/watch?v=' + key
 
-getPopList()
-#getImage('246655')
-#getVideo('246655')
+print getPopList()
+print getImage('246655')
+print getVideo('246655')
 
