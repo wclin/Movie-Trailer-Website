@@ -4,7 +4,11 @@ from urllib2 import Request, urlopen, URLError
 import json
 from pprint import pprint
 
-api_key = "4f6c1387d0935fa644b5b7a1484146ac"
+api_key = ''
+
+def setKey(key):
+    global api_key 
+    api_key = key
 
 
 def sendReq(request):
