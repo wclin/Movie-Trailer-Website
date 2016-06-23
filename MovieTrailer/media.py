@@ -1,8 +1,10 @@
 import webbrowser
 from tmdb3 import *
 
+
 class Movie():
     """A simple movie datastructure"""
+
     def __init__(self, tmdb_id):
         self.tmdb_id = tmdb_id
         self.title = getTitle(tmdb_id)
