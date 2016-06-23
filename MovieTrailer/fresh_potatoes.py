@@ -3,7 +3,8 @@ import os
 import re
 import media
 
-# Code mainly based on: https://github.com/adarsh0806/ud036_StarterCode/blob/master/fresh_tomatoes.py
+# Code mainly based on:
+# https://github.com/adarsh0806/ud036_StarterCode/blob/master/fresh_tomatoes.py
 
 # Styles and scripting for the page
 main_page_head = '''
@@ -142,9 +143,12 @@ def create_movie_tiles_content(movies):
             r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
         trailer_youtube_id = (youtube_id_match.group(0) if youtube_id_match
                               else None)
-        
+
         # Truncate the title
-        title = (movie.title[:16] + '..') if len(movie.title) > 18 else movie.title
+        title = (
+            movie.title[:16] + '..')
+            if len(movie.title) > 18
+            else movie.title
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
