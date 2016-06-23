@@ -1,8 +1,10 @@
 import webbrowser
+import request
 
 class Movie():
     """A simple movie datastructure"""
-    def __init__(self, title, poster_image_url, trailer_youtube_url):
-        self.title = title
-        self.poster_image_url = poster_image_url
-        self.trailer_youtube_url = trailer_youtube_url
+    def __init__(self, tmdb_id):
+        self.tmdb_id = tmdb_id
+        self.title = getTitle(tmdb_id)
+        self.poster_image_url = getImage(tmdb_id)
+        self.trailer_youtube_url = getVideo(tmdb_id)
