@@ -1,6 +1,6 @@
 import fresh_potatoes as fp
 import media
-from request import *
+from tmdb3 import *
 
 pop_list = getPopList()
 mv_list = []

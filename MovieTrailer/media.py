@@ -1,5 +1,5 @@
 import webbrowser
-from request import *
+from tmdb3 import *
 
 class Movie():
     """A simple movie datastructure"""

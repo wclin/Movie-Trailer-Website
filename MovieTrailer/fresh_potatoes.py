@@ -142,10 +142,13 @@ def create_movie_tiles_content(movies):
             r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
         trailer_youtube_id = (youtube_id_match.group(0) if youtube_id_match
                               else None)
+        
+        # Truncate the title
+        title = (movie.title[:16] + '..') if len(movie.title) > 18 else movie.title
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
-            movie_title=movie.title,
+            movie_title=title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id
         )
