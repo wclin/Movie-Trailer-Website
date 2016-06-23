@@ -145,10 +145,7 @@ def create_movie_tiles_content(movies):
                               else None)
 
         # Truncate the title
-        title = (
-            movie.title[:16] + '..')
-            if len(movie.title) > 18
-            else movie.title
+        title = (movie.title[:16] + '..') if len(movie.title) > 18 else movie.title
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
