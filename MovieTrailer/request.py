@@ -43,7 +43,16 @@ def getVideo(movie_id):
     key = jdata['results'][0]['key']
     return 'https://www.youtube.com/watch?v=' + key
 
-print getPopList()
-print getImage('246655')
-print getVideo('246655')
+def getTitle(movie_id):
+    request = Request('https://api.themoviedb.org/3/movie/' + movie_id 
+            + '?&api_key=' + api_key)
+    jdata = sendReq(request)
+    title = jdata['original_title']
+    return title
+
+
+#print getPopList()
+#print getImage('246655')
+#print getVideo('246655')
+print getTitle('246655')
 
