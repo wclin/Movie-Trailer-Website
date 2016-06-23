@@ -7,8 +7,8 @@ import fresh_potatoes as fp
 import media
 from tmdb3 import *
 
-pop_list = getPopList() # A list of tmdb_id(int)
-mv_list = [] 
+pop_list = getPopList()  # A list of tmdb_id(int)
+mv_list = []
 
 # For each movie in list, construct it from the given tmdb_id.
 for tmdb_id in pop_list:

@@ -16,8 +16,11 @@ def sendReq(request):
     except URLError as e:
         print 'No data. Got an error code:', e
 
-# Return a list of tmdb_id of popular movies
+
 def getPopList():
+    """
+    Return a list of tmdb_id of popular movies
+    """
     pop_list = []
     request = Request('https://api.themoviedb.org/3/movie/popular?'
                       + '&api_key=' + api_key)
@@ -26,27 +29,35 @@ def getPopList():
         pop_list.append(mv['id'])
     return pop_list
 
-# Return the url of youtube trailer
+
 def getVideo(movie_id):
+    """
+    Return the url of youtube trailer
+    """
     request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
                       + '/videos?&api_key=' + api_key)
     jdata = sendReq(request)
     key = jdata['results'][0]['key']
     return 'https://www.youtube.com/watch?v=' + key
 
-# Return the movie title
+
 def getTitle(movie_id):
+    """
+    Return the movie title
+    """
     request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
                       + '?&api_key=' + api_key)
     jdata = sendReq(request)
     title = jdata['original_title']
     return title
 
-# Return the url of poster image
+
 def getPoster(movie_id):
+    """
+    Return the url of poster image
+    """
     request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
                       + '?&api_key=' + api_key)
     jdata = sendReq(request)
     poster_path = jdata['poster_path']
     return 'https://image.tmdb.org/t/p/w500' + poster_path
-
