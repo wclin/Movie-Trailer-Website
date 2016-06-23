@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# A simple python wrapper for tmdb3: https://api.themoviedb.org/3/
 from urllib2 import Request, urlopen, URLError
 import json
 from pprint import pprint
@@ -15,7 +16,7 @@ def sendReq(request):
     except URLError as e:
         print 'No data. Got an error code:', e
 
-
+# Return a list of tmdb_id of popular movies
 def getPopList():
     pop_list = []
     request = Request('https://api.themoviedb.org/3/movie/popular?'
@@ -25,15 +26,7 @@ def getPopList():
         pop_list.append(mv['id'])
     return pop_list
 
-
-def getImage(movie_id):
-    request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
-                      + '/images?&api_key=' + api_key)
-    jdata = sendReq(request)
-    file_path = jdata['backdrops'][0]['file_path']
-    return 'https://image.tmdb.org/t/p/w500' + file_path
-
-
+# Return the url of youtube trailer
 def getVideo(movie_id):
     request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
                       + '/videos?&api_key=' + api_key)
@@ -41,7 +34,7 @@ def getVideo(movie_id):
     key = jdata['results'][0]['key']
     return 'https://www.youtube.com/watch?v=' + key
 
-
+# Return the movie title
 def getTitle(movie_id):
     request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
                       + '?&api_key=' + api_key)
@@ -49,10 +42,11 @@ def getTitle(movie_id):
     title = jdata['original_title']
     return title
 
-
+# Return the url of poster image
 def getPoster(movie_id):
     request = Request('https://api.themoviedb.org/3/movie/' + str(movie_id)
                       + '?&api_key=' + api_key)
     jdata = sendReq(request)
     poster_path = jdata['poster_path']
     return 'https://image.tmdb.org/t/p/w500' + poster_path
+
